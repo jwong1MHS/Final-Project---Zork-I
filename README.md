@@ -17,3 +17,6 @@ As of now the only version that works is the zork_aboveground.py, since it's the
 The presentation can be found here: https://docs.google.com/presentation/d/1o3qkvV2UqtaJ-Br5HNm9O31g7pide0cwVMkgvCNfZh8/edit?usp=sharing
 
 
+The flowchart can be found here:
+https://drive.google.com/file/d/1WADreY_5xQbku6GhDfMZyNfb-sHJ2iA3/view?usp=sharing
+
