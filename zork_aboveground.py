@@ -41,6 +41,9 @@ def West_of_House():    #game always starts off here
         West_of_House()
     elif option == "north":
         North_of_House()
+    elif option == "save":
+        print("Saved. Your password is: \nb11cd6c377ce942048d66ce45c702d")
+        West_of_House()
     else:
         print(f"I do not know what {option} is.")   #used for any unknown commands
         West_of_House()
@@ -59,6 +62,9 @@ def North_of_House():
         Forest_Path()
     elif option == "east":
         Behind_House()
+    elif option == "save":
+        print("Saved. Your password is: \n3db34919bd9257f46e195b26e811b6")
+        North_of_House()
     else:
         print(f"I do not know what {option} is.")   #used for any unknown commands
         North_of_House()
@@ -81,6 +87,9 @@ def Forest_Path():
     elif (option == "open egg") and ("egg" in inventory):   #checks if egg is in the inventory
         print("You have neither the tools nor the expertise.")
         Forest_Path()
+    elif option == "save":
+        print("Saved. Your password is: \n342896f4a269b37ec7b1b0247fa0e9")
+        Forest_Path()
     else:
         print(f"I do not know what {option} is.")   #used for any unknown commands
         Forest_Path()
@@ -100,6 +109,9 @@ def Up_a_Tree():
         Forest_Path()
     elif option == "get egg":
         print("Taken.")
+        Up_a_Tree()
+    elif option == "save":
+        print("Saved. Your password is: \n6e2a45ba1cdff12db0cce35f1ecb4b")
         Up_a_Tree()
     else:
         print(f"I do not know what {option} is.")   #used for any unknown commands
@@ -130,6 +142,9 @@ def Behind_House():
     elif option == "enter house":
         print("The window is closed.")
         Behind_House()
+    elif option == "save":
+        print("Saved. Your password is: \n0f6df555b296b44891ea67b1ddd175")
+        Behind_House()
     else:
         print(f"I do not know what {option} is.")   #used for any unknown commands
         Behind_House()
@@ -154,10 +169,11 @@ def Kitchen():
         Kitchen()
     elif option == "inventory":
         print("You are carrying:")
-        for p in inventory:
+        for p in inventory:     #lists the items in the inventory
             print(p)
+        Kitchen()
     elif option == "save":
-        print("Saved. Your password is: \nb11cd6c377ce942048d66ce45c702d")
+        print("Saved. Your password is: \ne3e7eddff4565f36926e7228f77555")
         Kitchen()
     elif option == "eat peppers":
         print("Eating the peppers causes your mouth to catch on fire, and slowly you turn to \nashes.")
@@ -197,6 +213,9 @@ def Living_Room():
         Living_Room()
     elif option == "down":
         Cellar()
+    elif option == "save":
+        print("Saved. Your password is: \n10ce9683df28a6be0d632b0adf0531")
+        Living_Room()
     else:
         print(f"I do not know what {option} is.")   #used for any unknown commands
         Living_Room()
@@ -214,11 +233,11 @@ def Cellar():
     if option == "down":
         print("Oh, no! You have walked into the slavering fangs of a lurking grue!\n")
         dead()
+    elif option == "save":
+        print("Saved. Your password is: \n163c432926af5c8cf990fe5b02f32b")
     else:
         print(f"I do not know what {option} is.")   #used for any unknown commands
         Cellar()
-
-
 
 """---------------------------------------------------------------------------------------------------------------"""
 
@@ -234,10 +253,10 @@ def opening():  #the very start of the game
 
 def request(x, resurrect):  #asks for the keycode to jump to a part of the game
     keycode = input("What is the password?\n\n>")
-    if (keycode == "b11cd6c377ce942048d66ce45c702d"):
+    if (keycodes(keycode) == True):
         if (resurrect == True):     #checks if user has been resurrected
             print("You have been resurrected successfully.")
-        Kitchen()
+        teleportation(keycode)
     else:
         confirm = input("Are you sure you know the password?\n\n>").lower()
         if (confirm == "no"):
@@ -264,5 +283,32 @@ def dead(): #called when the user is dead
             sys.exit(0)
     else:
         dead()
+
+def keycodes(keycode):
+    #checking if keycode is in that list
+    check = ["b11cd6c377ce942048d66ce45c702d", "3db34919bd9257f46e195b26e811b6", "342896f4a269b37ec7b1b0247fa0e9", "6e2a45ba1cdff12db0cce35f1ecb4b", "0f6df555b296b44891ea67b1ddd175", "e3e7eddff4565f36926e7228f77555", "10ce9683df28a6be0d632b0adf0531", "163c432926af5c8cf990fe5b02f32b"]
+    if keycode in check:
+        return True
+
+def teleportation(keycode):     #if the keycode is that string, go to that part of the game
+    if keycode == "b11cd6c377ce942048d66ce45c702d":
+        West_of_House()
+    elif keycode == "3db34919bd9257f46e195b26e811b6":
+        North_of_House()
+    elif keycode == "342896f4a269b37ec7b1b0247fa0e9":
+        Forest_Path()
+    elif keycode == "6e2a45ba1cdff12db0cce35f1ecb4b":
+        Up_a_Tree()
+    elif keycode == "0f6df555b296b44891ea67b1ddd175":
+        Behind_House()
+    elif keycode == "e3e7eddff4565f36926e7228f77555":
+        Kitchen()
+    elif keycode == "10ce9683df28a6be0d632b0adf0531":
+        Living_Room()
+    elif keycode == "163c432926af5c8cf990fe5b02f32b":
+        Cellar()
+    else:
+        print("Error. Closing console now...")
+
 
 opening()
